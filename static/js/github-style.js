@@ -28,7 +28,7 @@ const now = new Date();
 let contributions;
 
 current_lang = window.location.pathname.split("/")[1]
-if (current_lang.length == 0) {
+if (current_lang.length != 2) {
   current_lang = "default";
 }
 
