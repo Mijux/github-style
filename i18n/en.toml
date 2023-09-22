@@ -1,0 +1,41 @@
+[organizations]
+    other = "Organizations"
+
+[search]
+    other = "Search"
+
+[overview]
+    other = "Overview"
+
+[posts]
+    other = "Posts"
+
+[pinned]
+    other = "Pinned"
+
+[less]
+    other = "Less"
+
+[more]
+    other = "More"
+
+[post_activity]
+    other = "Post activity"
+
+[created]
+    other = "Created"
+
+[modified]
+    other = "Modified"
+
+[words]
+    other = "Words"
+
+[previous]
+    other = "Previous"
+
+[next]
+    other = "Next"
+
+[page404]
+    other = "Didn’t find anything here!"

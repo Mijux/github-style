@@ -3,6 +3,13 @@ title = ""
 date = {{ .Date }}
 author = ""
 keywords = ["", ""]
-cover = ""
 summary = ""
+pin = false
+draft = false
 +++
+
+<style>
+    article > * {
+        text-align: justify;
+    }
+</style>

@@ -1,7 +1,38 @@
-const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-const monthsFull = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+const months = {
+  "default": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+  "fr": ["Jan", "Fév", "Mar", "Avr", "Mai", "Jun", "Jul", "Aoû", "Sep", "Oct", "Nov", "Déc"]
+}
+
+const monthsFull = {
+  "default": ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+  "fr": ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août","Septembre", "Octobre", "Novembre", "Décembre"]
+}
+
+const temp = {
+  "default": [(x) => { return `${x} seconds ago` }, (x) => { return `${x} minutes ago` }, (x) => { return `${x} hours ago` }, (x) => { return `${x} days ago` }],
+  "fr": [(x) => { return `${x} secondes` }, (x) => { return `${x} minutes` }, (x) => { return `${x} heures` }, (x) => { return `${x} jours` }]
+}
+
+const words = {
+  "default": {
+    "created": "Created",
+    "post": "post"
+  },
+  "fr": {
+    "created": "A créé",
+    "post": "article"
+  }
+}
+
 const now = new Date();
 let contributions;
+
+current_lang = window.location.pathname.split("/")[1]
+if (current_lang.length == 0) {
+  current_lang = "default";
+}
+
+console.log(current_lang);
 
 (() => {
   setRelativeTime();
@@ -58,7 +89,7 @@ function switchYear(year) {
     document.querySelector('#posts-activity').appendChild(node);
   }
 
-  graph(year, posts, startDate, endDate);
+  //graph(year, posts, startDate, endDate);
 
   const yearList = document.querySelectorAll('.js-year-link');
   for (const elem of yearList) {
@@ -81,9 +112,9 @@ function monthly(year, month, posts) {
       class="col-8 css-truncate css-truncate-target lh-condensed width-fit flex-auto min-width-0">
       <a href="${post.link}">${post.title}</a>
     </div>
-    <time  title="This post was made on ${months[post.date.getMonth()]} ${post.date.getDate()}"
+    <time  title="This post was made on ${months[current_lang][post.date.getMonth()]} ${post.date.getDate()}"
       class="col-2 text-right f6 text-gray-light pt-1">
-      ${months[post.date.getMonth()]} ${post.date.getDate()}
+      ${months[current_lang][post.date.getMonth()]} ${post.date.getDate()}
     </time>
   </li>`;
   }
@@ -91,7 +122,7 @@ function monthly(year, month, posts) {
   <div class="contribution-activity-listing float-left col-12 col-lg-10">
     <div class="width-full pb-4">
       <h3 class="h6 pr-2 py-1 border-bottom mb-3" style="height: 14px;">
-        <span class="color-bg-canvas pl-2 pr-3">${monthsFull[month]} <span
+        <span class="color-bg-canvas pl-2 pr-3">${monthsFull[current_lang][month]} <span
             class="text-gray">${monthPosts.length > 0 ? monthPosts[0].date.getFullYear() : year}</span></span>
       </h3>
 
@@ -107,7 +138,7 @@ function monthly(year, month, posts) {
           <details class="Details-element details-reset" open>
             <summary role="button" class="btn-link f4 muted-link no-underline lh-condensed width-full">
               <span class="color-text-primary ws-normal text-left">
-                Created ${monthPosts.length} post${monthPosts.length > 1 ? 's' : ''}
+                ${words[current_lang]["created"]} ${monthPosts.length} ${words[current_lang]["post"]}${monthPosts.length > 1 ? 's' : ''}
               </span>
               <span class="d-inline-block float-right color-icon-secondary">
                 <span class="Details-content--open float-right">
@@ -231,7 +262,7 @@ function graph(year, posts, startDate, endDate) {
       continue;
     }
     html += `<text x="${15 * month + 16}" y="-9"
-    class="month">${months[(i + startDate.getMonth()) % 12]}</text>`;
+    class="month">${months[current_lang][(i + startDate.getMonth()) % 12]}</text>`;
   }
   html += `
 <text text-anchor="start" class="wday" dx="-10" dy="8"
@@ -260,7 +291,7 @@ function svgTip(elem, count, dateStr) {
   }
   const rect = getCoords(elem);
   const date = new Date(dateStr);
-  const dateFmt = `${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
+  const dateFmt = `${months[current_lang][date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
   if (count) {
     svgElem.innerHTML = `<strong>${count} posts</strong> on ${dateFmt}`;
   } else {
@@ -303,21 +334,21 @@ function relativeTime(dateStr) {
   const hours = Math.floor(diff / 60 / 60);
   const days = Math.floor(diff / 60 / 60 / 24);
   if (seconds < 60) {
-    return `${seconds} seconds ago`;
+    return temp[current_lang][0](seconds);
   }
   if (minutes < 60) {
-    return `${minutes} minutes ago`;
+    return temp[current_lang][1](minutes);
   }
   if (hours < 24) {
-    return `${hours} hours ago`;
+    return temp[current_lang][2](hours);
   }
   if (days < 30) {
-    return `${days} days ago`;
+    return temp[current_lang][3](days);
   }
   if (date.getFullYear() === now.getFullYear()) {
-    return `${date.getDate()} ${months[date.getMonth()]}`;
+    return `${date.getDate()} ${months[current_lang][date.getMonth()]}`;
   }
-  return `${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`;
+  return `${date.getDate()} ${months[current_lang][date.getMonth()]} ${date.getFullYear()}`;
 }
 
 function setRelativeTime() {

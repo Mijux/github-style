@@ -6,7 +6,12 @@
           <div class="flex-auto min-width-0 width-fit mr-3">
             <div class="d-flex">
               <div class="d-none d-md-block">
-                <a class="avatar mr-2 flex-shrink-0" href="{{ .Site.BaseURL }}">
+
+                {{ if isset .Language.Params "is_french" }}
+                  <a class="avatar mr-2 flex-shrink-0" href="{{ .Site.BaseURL }}{{ .Language }}">
+                {{ else }}
+                  <a class="avatar mr-2 flex-shrink-0" href="{{ .Site.BaseURL }}">
+                {{ end }}
                   <img class=" avatar-user"
                     src="{{ with $.Site.Params.avatar }}{{ $.Site.Params.avatar }}{{ else }}{{ "images/avatar.png" | absURL }}{{ end }}"
                     width="32" height="32"></a>
@@ -14,18 +19,22 @@
               <div class="d-flex flex-column">
                 <h1 class="break-word f3 text-normal mb-md-0 mb-1">
                   <span class="author">
-                    <a href="{{ .Site.BaseURL }}">{{ .Site.Params.author }}</a></span><span
+                    {{ if isset .Language.Params "is_french" }}
+                      <a href="{{ .Site.BaseURL }}{{ .Language }}">{{ .Site.Params.author }}</a></span><span
+                    {{ else }}
+                      <a href="{{ .Site.BaseURL }}">{{ .Site.Params.author }}</a></span><span
+                    {{ end }}
                     class="path-divider">/</span><strong class="css-truncate-target mr-1" style="max-width: 410px"><a
                       href="{{ .Permalink }}">{{ .Title }}</a></strong>
                 </h1>
                 <div class="note m-0">
-                  Created <relative-time datetime="{{ .PublishDate.Format "Mon, 02 Jan 2006 15:04:05 -0700" }}"
+                  {{ i18n "created" }} <relative-time datetime="{{ .PublishDate.Format "Mon, 02 Jan 2006 15:04:05 -0700" }}"
                     class="no-wrap">
                     {{ .PublishDate.Format "Mon, 02 Jan 2006 15:04:05 -0700" }}</relative-time>
 
                   {{ if .Site.Params.lastmod }}
                   <span class="file-info-divider"></span>
-                  Modified <relative-time datetime="{{ .Lastmod.Format "Mon, 02 Jan 2006 15:04:05 -0700" }}"
+                  {{ i18n "modified" }} <relative-time datetime="{{ .Lastmod.Format "Mon, 02 Jan 2006 15:04:05 -0700" }}"
                     class="no-wrap">
                     {{ .Lastmod.Format "Mon, 02 Jan 2006 15:04:05 -0700" }}</relative-time>
                   {{ end }}
@@ -57,7 +66,7 @@
                         </div>
                       </div>
                     </details-menu>
-                      {{ countwords .Content }} Words
+                      {{ countwords .Content }} {{ i18n "words" }}
                     <!-- <span class="file-info-divider"></span>
                                         {{ .ReadingTime }} min -->
 
