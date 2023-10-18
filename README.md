@@ -140,39 +140,43 @@ mathJax: true
 ## config.toml example
 
 ```toml
-baseURL = "https://meik2333.com/"
+baseURL = "https://mijux.github.io/"
 languageCode = "zh-cn"
-title = "MeiK's blog"
+title = "Mijux's blog"
 theme = "github-style"
-googleAnalytics = "UA-123456-789"
 pygmentsCodeFences = true
 pygmentsUseClasses = true
 
 [params]
-  author = "MeiK"
+  author = "Mijux"
   description = "In solitude, where we are least alone."
-  github = "MeiK2333"
-  facebook = "MeiK2333"
-  twitter = "MeiK2333"
-  linkedin = "MeiK2333"
-  instagram = "MeiK2333"
-  tumblr = "MeiK2333"
-  email = "meik2333@gmail.com"
-  url = "https://meik2333.com"
+  github = "Username"
+  facebook = "Username"
+  twitter = "Username"
+  linkedin = "Username"
+  instagram = "Username"
+  tumblr = "Username"
+  email = "your.email@domain.com"
+  url = "https://mijux.github.io"
   keywords = "blog, google analytics"
   rss = true
   lastmod = true
   userStatusEmoji = "😀"
   favicon = "/images/github.png"
   location = "China"
+
+  googleanalytics = "UA-******-***"
+  mamotoserver = "your.mamoto.instance"
+  mamotoid = "your_website_id_on_mamoto"
+
   enableGitalk = true
 
   [params.gitalk]
     clientID = "Your client ID" 
     clientSecret = "Your client secret" 
     repo = "repo"
-    owner = "MeiK2333"
-    admin = "MeiK2333"
+    owner = "Username"
+    admin = "Username"
     id = "location.pathname"
     labels = "gitalk"
     perPage = 15
@@ -182,11 +186,11 @@ pygmentsUseClasses = true
 
   [[params.links]]
     title = "Link"
-    href = "https://github.com/meik2333"
+    href = "https://github.com/Mijux"
   [[params.links]]
     title = "Link2"
-    href = "https://meik2333.com"
-    icon = "https://meik2333.com/images/avatar.png"
+    href = "https://mijux.github.io"
+    icon = "https://mijux.github.io/images/avatar.png"
 
 [frontmatter]
   lastmod = ["lastmod", ":fileModTime", ":default"]
@@ -212,45 +216,3 @@ And it will show like this:
   <p>block content</p>
 </details>
 
-## deploy.sh example
-
-There are various way to deploy to github, here is a link to official [document](https://gohugo.io/hosting-and-deployment/hosting-on-github/).
-
-Here is an sample. Note line 22 have `env HUGO_ENV="production"`, makes sure googleAnalysis is loaded during production, but is not loaded when we are testing it in localhost.
-
-```bash
-#!/bin/sh
-
-if [ "`git status -s`" ]
-then
-    echo "The working directory is dirty. Please commit any pending changes."
-    exit 1;
-fi
-
-echo "Deleting old publication"
-rm -rf public
-mkdir public
-git worktree prune
-rm -rf .git/worktrees/public/
-
-echo "Checking out gh-pages branch into public"
-git worktree add -B gh-pages public origin/gh-pages
-
-echo "Removing existing files"
-rm -rf public/*
-
-echo "Generating site"
-env HUGO_ENV="production" hugo -t github-style
-
-echo "Updating gh-pages branch"
-cd public && git add --all && git commit -m "Publishing to gh-pages (publish.sh)"
-
-#echo "Pushing to github"
-#git push --all
-```
-
-Then you can verify the site is working and use `git push --all` to push the change to github. If you don't want to check again every time, you can uncomment the `#git push --all` in the script.
-
-## TODO
-
-- 重写标题导航，那玩意儿引入的 JS 在控制台报错。
