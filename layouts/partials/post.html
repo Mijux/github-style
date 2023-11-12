@@ -111,5 +111,6 @@
 </script>
 
 {{ if .Page.Store.Get "hasMermaid" }}
+{{ if (.Params.mermaid) }}
   {{ partial "mermaid.html" }}
 {{ end }}
