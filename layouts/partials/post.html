@@ -104,6 +104,18 @@
 <script type="application/javascript" src='{{ "js/toc.js" | absURL }}'></script>
 <link rel="stylesheet" href='{{ "css/toc.css" | absURL }}' />
 
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    let links = document.querySelector("article").querySelectorAll("a")
+    links.forEach((link) => {
+      console.log(link.href)
+      console.log(window.location.href)
+
+      if (!link.href.startsWith(window.location.href)) link.setAttribute("target","_blank")
+    })
+  });
+</script>
+
 {{ if .Page.Store.Get "hasMermaid" }}
   {{ partial "mermaid.html" }}
 {{ end }}
