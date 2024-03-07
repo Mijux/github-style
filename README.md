@@ -67,7 +67,7 @@ summary: "The summary content"
 
 ### Approach 2: use `<!--more-->`
 
-Use `<!--more-->` to seperate content that will display in the posts page as abstraction and the rest of the content. This is different from summary, as summary will not appear in the post.
+Use `<!--more-->` to separate content that will display in the posts page as abstraction and the rest of the content. This is different from summary, as summary will not appear in the post.
 ```
 ---
 title: "title"
@@ -79,7 +79,7 @@ abstraction show in the post page
 other content
 ```
 
-## add last modified data
+## Add last modified date
 
 add to `config.toml`
 
@@ -98,8 +98,8 @@ add to `config.toml`
 enableGitalk = true
 
   [params.gitalk]
-    clientID = "Your client ID" 
-    clientSecret = "Your client secret" 
+    clientID = "Your client ID"
+    clientSecret = "Your client secret"
     repo = "repo"
     owner = "Your Github username"
     admin = "Your Github username"
@@ -111,7 +111,7 @@ enableGitalk = true
     distractionFreeMode = false
 ```
 
-## Support LaTex
+## Support LaTeX
 
 In you post add `math: true` to [front matter](https://gohugo.io/content-management/front-matter/)
 
@@ -121,7 +121,7 @@ katex: math
 ---
 ```
 
-Then the [katex script](https://katex.org/docs/autorender.html) will auto render the string enclosed be delimiters.
+Then the [katex script](https://katex.org/docs/autorender.html) will auto render the string enclosed by delimiters.
 
 ```
 # replace ... with latex formula
@@ -129,7 +129,7 @@ display inline \\( ... \\)
 display block $$ ... $$
 ```
 
-![latex example](images/latex_example.png)
+![latex example](https://raw.githubusercontent.com/MeiK2333/github-style/master/images/latex_example.png)
 
 ## Support MathJax
 you can add MathJax:true to frontmatter
@@ -163,6 +163,8 @@ pygmentsUseClasses = true
   lastmod = true
   userStatusEmoji = "😀"
   favicon = "/images/github.png"
+  avatar = "/images/avatar.png"
+  headerIcon = "/images/GitHub-Mark-Light-32px.png"
   location = "China"
 
   googleanalytics = "UA-******-***"
@@ -172,8 +174,8 @@ pygmentsUseClasses = true
   enableGitalk = true
 
   [params.gitalk]
-    clientID = "Your client ID" 
-    clientSecret = "Your client secret" 
+    clientID = "Your client ID"
+    clientSecret = "Your client secret"
     repo = "repo"
     owner = "Username"
     admin = "Username"

@@ -28,6 +28,8 @@ pygmentsUseClasses = true
   mamotoserver = "your.mamoto.instance"
   mamotoid = "your_website_id_on_mamoto"
 
+  avatar = "/images/avatar.png"
+  headerIcon = "/images/GitHub-Mark-Light-32px.png"
 
   [params.gitalk]
     clientID = "Your client ID" # Your client ID
@@ -40,7 +42,7 @@ pygmentsUseClasses = true
     perPage = 15 # Pagination size, with maximum 100.
     pagerDirection = "last" # Comment sorting direction, available values are 'last' and 'first'.
     createIssueManually = true # 设置为true，如果是管理员登录，会自动创建issue，如果是false，需要管理员手动添加第一个评论(issue)
-    distractionFreeMode = false # Enable hot key (cmd|ctrl + enter) submit comment.    
+    distractionFreeMode = false # Enable hot key (cmd|ctrl + enter) submit comment.
     proxy = "https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token" # 可以自行添加反向代理
   [[params.links]]
     title = "Link"

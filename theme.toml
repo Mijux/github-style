@@ -6,6 +6,7 @@ license = "MIT"
 licenselink = "https://github.com/Mijux/github-style/blob/master/LICENSE"
 description = "github-style hugo theme"
 homepage = "https://github.com/Mijux"
+demosite = "https://mijux.github.io/"
 tags = ["blog", "google analytics"]
 features = ["google analytics"]
 min_version = "0.41"
