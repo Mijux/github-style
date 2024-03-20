@@ -1,0 +1,75 @@
+baseURL: "<your-url>"
+languageCode: "en-us"
+title: "<website-title>"
+theme: "github-style"
+
+pygmentsCodeFences: true
+pygmentsUseClasses: true
+
+params:
+  author: "<your-name>"
+  description: "<your-description>"
+  github: "<your-github-username>"
+  twitter: "<your-twitter-username>"
+  cyberdefenders: "<your-cyberdefenders-username>"
+  dockerhub: "<your-dockerhub-username>"
+  facebook: "<your-facebook-username>"
+  linkedin: "<your-linkedin-username>"
+  instagram: "<your-instagram-username>"
+  tumblr: "<your-tumblr-username>"
+  email: "<your-mail>"
+  url: "<your-url>"
+  keywords: "<keywords,separated,with,comma>"
+  rss: true
+  lastmod: true
+  userStatusEmoji: "<an-emoji>"
+  favicon: "/images/avatar.png"
+  location: "<your-location>"
+  
+  mamotoserver: "<your-mamoto-server>"
+  mamotoid: "<your-mamoto-id>"
+
+  avatar: "/images/avatar.png"
+  headerIcon: "/images/GitHub-Mark-Light-32px.png"
+
+#  enableGitalk: true
+#  params:
+#    gitalk:
+#      clientID: "Your client ID"
+#      clientSecret: "Your client secret"
+#      repo: "repo"
+#      owner: "username"
+#      admin: "username"
+#      id: "location.pathname"
+#      labels: "gitalk"
+#      perPage: 15
+#      pagerDirection: "last"
+#      createIssueManually: true
+#      distractionFreeMode: false
+
+frontmatter:
+  lastmod:
+    - "lastmod"
+    - ":fileModTime"
+    - ":default"
+
+markup:
+  defaultMarkdownHandler: "goldmark"
+  goldmark:
+    renderer:
+      unsafe: true
+
+
+DefaultContentLanguage: "en"
+languages:
+  en:
+    languageName: "English 🇺🇸"
+    weight: 1
+    params:
+      locale: "en-US"
+  fr:
+    languageName: "Another 🏳️"
+    weight: 2
+    params:
+      locale: "en-US"
+      description: "<your-description-in-another-language>"

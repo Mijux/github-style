@@ -1,7 +1,16 @@
 {{ if .IsTranslated }}
+  <link rel="stylesheet" href='{{ "css/language-switcher.css" | absURL }}'>
+	<script type="application/javascript" src="{{ "js/language-switcher.js" | absURL }}"></script>
 	<nav class="LangNav">
-	{{ range .Translations }}
-		<a href="{{ .Permalink }}">{{ .Language.LanguageName }}</a>
-	{{ end}}
+		<div class="dropdown">
+			<button onclick="showLanguageDropdown()" class="dropbtn">{{ .Language.LanguageName }}</button>
+			<div id="language-dropdown" class="dropdown-content">
+				{{ range .Translations }}
+				<a href="{{ .Permalink }}"
+				{{ if eq .Lang $.Lang }} selected {{ end }}
+				>{{ .Language.LanguageName }}</a>
+				{{ end}}
+			</div>
+		  </div> 
 	</nav>
 {{ end }}
