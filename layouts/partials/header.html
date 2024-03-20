@@ -1,12 +1,7 @@
 <div style="position: relative">
   <header class="Header js-details-container Details px-3 px-md-4 px-lg-5 flex-wrap flex-md-nowrap open Details--on">
     <div class="Header-item mobile-none" style="margin-top: -4px; margin-bottom: -4px;">
-
-      {{ if isset .Language.Params "is_french" }}
         <a class="Header-link" href="{{ .Site.BaseURL }}{{ .Language }}">
-      {{ else }}
-        <a class="Header-link" href="{{ .Site.BaseURL }}">
-      {{ end }}
         <img class="octicon" height="32" width="32" src="{{ .Site.Params.headerIcon }}">
       </a>
     </div>
@@ -36,12 +31,7 @@
     </div>
 
     <div class="Header-item Header-item--full flex-justify-center d-md-none position-relative">
-      
-        {{ if isset .Language.Params "is_french" }}
-          <a class="Header-link " href="{{ .Site.BaseURL }}{{ .Language }}">
-        {{ else }}
-          <a class="Header-link " href="{{ .Site.BaseURL }}">
-        {{ end }}
+        <a class="Header-link " href="{{ .Site.BaseURL }}{{ .Language }}">
         <img class="octicon octicon-mark-github v-align-middle" height="32" width="32" src="{{ .Site.Params.headerIcon }}">
       </a>
     </div>

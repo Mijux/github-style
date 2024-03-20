@@ -1,0 +1,59 @@
+.dropbtn {
+    appearance: none;
+    border: 0;
+    outline: 0;
+    font: inherit;
+
+    min-width: max-content;
+    padding: 0.5rem 3.75rem 0.5rem 1rem;
+    background: url(/images/arrow_down.svg) no-repeat right 0.8em center / 1.4em,
+        linear-gradient(to left, #6b7583 3em, #48535f 3em);
+    color: white;
+    border-radius: 0.25em;
+    box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+
+    /* Remove IE arrow */
+    &::-ms-expand {
+        display: none;
+    }
+
+    /* Remove focus outline */
+    &:focus {
+        outline: none;
+    }
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    min-width: 8rem;
+    width: max-content;
+    border-radius: 0.25em;
+    display: none;
+    position: absolute;
+    background-color: #48535f;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+    background-color: #6b7583;
+}
+
+.show {
+    display: block;
+}
