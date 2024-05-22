@@ -197,6 +197,10 @@ pygmentsUseClasses = true
 [frontmatter]
   lastmod = ["lastmod", ":fileModTime", ":default"]
 
+[services]
+  [services.googleAnalytics]
+    ID = "UA-123456-789"
+
 ```
 
 ## Support collapsible block
