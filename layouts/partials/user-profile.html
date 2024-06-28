@@ -222,17 +222,19 @@
     iconElement.setAttribute('color', '#f0f6fc');
   }
 
-  var style = localStorage.getItem('data-color-mode');
-  iconElement = document.getElementById('github-icon');
-  twitterIconElement = document.getElementById('twitter-icon');
-  if (style == 'light') {
-    iconElement.setAttribute('fill', '#24292e');
-    twitterIconElement.setAttribute("fill","black")
-  }
-  else {
+var style = localStorage.getItem('data-color-mode');
+iconElement = document.getElementById('github-icon');
+twitterIconElement = document.getElementById('twitter-icon');
+if (style == 'light') {
+  if (iconElement) iconElement.setAttribute('fill', '#24292e');
+  if (twitterIconElement) twitterIconElement.setAttribute("fill","black")
+}
+else {
+  if (iconElement) {
     iconElement.removeAttribute('fill');
     iconElement.setAttribute('class', 'octicon');
     iconElement.setAttribute('color', '#f0f6fc');
-    twitterIconElement.setAttribute("fill","white")
   }
+  if (twitterIconElement) twitterIconElement.setAttribute("fill","white")
+}
 </script>
