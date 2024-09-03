@@ -222,3 +222,64 @@ And it will show like this:
   <p>block content</p>
 </details>
 
+## Support local search
+
+add to `config.toml`
+
+```toml
+[params]
+  enableSearch = true
+
+[outputs]
+  home = ["html", "json"]
+
+[outputFormats.json]
+  mediaType = "application/json"
+  baseName = "index"
+  isPlainText = false
+```
+
+We can do local search now, it is implemented by `fuse.js`.
+
+## deploy.sh example
+
+There are various way to deploy to github, here is a link to official [document](https://gohugo.io/hosting-and-deployment/hosting-on-github/).
+
+Here is an sample. Note line 22 have `env HUGO_ENV="production"`, makes sure googleAnalysis is loaded during production, but is not loaded when we are testing it in localhost.
+
+```bash
+#!/bin/sh
+
+if [ "`git status -s`" ]
+then
+    echo "The working directory is dirty. Please commit any pending changes."
+    exit 1;
+fi
+
+echo "Deleting old publication"
+rm -rf public
+mkdir public
+git worktree prune
+rm -rf .git/worktrees/public/
+
+echo "Checking out gh-pages branch into public"
+git worktree add -B gh-pages public origin/gh-pages
+
+echo "Removing existing files"
+rm -rf public/*
+
+echo "Generating site"
+env HUGO_ENV="production" hugo -t github-style
+
+echo "Updating gh-pages branch"
+cd public && git add --all && git commit -m "Publishing to gh-pages (publish.sh)"
+
+#echo "Pushing to github"
+#git push --all
+```
+
+Then you can verify the site is working and use `git push --all` to push the change to github. If you don't want to check again every time, you can uncomment the `#git push --all` in the script.
+
+## TODO
+
+- 重写标题导航，那玩意儿引入的 JS 在控制台报错。
