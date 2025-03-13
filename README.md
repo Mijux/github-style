@@ -180,7 +180,6 @@ pygmentsUseClasses = true
   headerIcon = "/images/GitHub-Mark-Light-32px.png"
   location = "China"
 
-  googleanalytics = "UA-******-***"
   mamotoserver = "your.mamoto.instance"
   mamotoid = "your_website_id_on_mamoto"
 
@@ -211,10 +210,6 @@ pygmentsUseClasses = true
 
 [frontmatter]
   lastmod = ["lastmod", ":fileModTime", ":default"]
-
-[services]
-  [services.googleAnalytics]
-    ID = "UA-123456-789"
 
 ```
 
@@ -259,8 +254,6 @@ We can do local search now, it is implemented by `fuse.js`.
 ## deploy.sh example
 
 There are various way to deploy to github, here is a link to official [document](https://gohugo.io/hosting-and-deployment/hosting-on-github/).
-
-Here is an sample. Note line 22 have `env HUGO_ENV="production"`, makes sure googleAnalysis is loaded during production, but is not loaded when we are testing it in localhost.
 
 ```bash
 #!/bin/sh
