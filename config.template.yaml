@@ -26,8 +26,8 @@ params:
   favicon: "/images/avatar.png"
   location: "<your-location>"
   
-  mamotoserver: "<your-mamoto-server>"
-  mamotoid: "<your-mamoto-id>"
+  matomoServer: "<your-mamoto-server>"
+  matomoId: "<your-mamoto-id>"
 
   vinceServer: "<your-vince-server>"
   vinceDataDomain: "<your-vince-data-domain"
