@@ -29,6 +29,9 @@ params:
   mamotoserver: "<your-mamoto-server>"
   mamotoid: "<your-mamoto-id>"
 
+  vinceServer: "<your-vince-server>"
+  vinceDataDomain: "<your-vince-data-domain"
+
   avatar: "/images/avatar.png"
   headerIcon: "/images/GitHub-Mark-Light-32px.png"
 

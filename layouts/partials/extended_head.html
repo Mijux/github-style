@@ -62,3 +62,10 @@
 {{ end }}
 
 <!-- End Matomo Code -->
+
+<!-- Vince -->
+{{ if (and (.Site.Params.vinceServer) (.Site.Params.vinceDataDomain)) }}
+  <script defer data-domain="{{ .Site.Params.vinceDataDomain }}" src="https://{{ .Site.Params.vinceServer }}/js/script.js"></script>
+{{ end }}
+
+<!-- End Vince Code -->
