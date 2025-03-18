@@ -67,3 +67,9 @@
 <script defer data-domain="{{ .Site.Params.vinceDataDomain }}" src="https://{{ .Site.Params.vinceServer }}/js/script.file-downloads.outbound-links.js"></script>
 {{ end }}
 <!-- End Vince Code -->
+
+<!-- Medama -->
+{{ if .Site.Params.medamaServer }}
+<script defer src="https://{{ .Site.Params.medamaServer }}/script.js"></script>
+{{ end }}
+<!-- End Medama Code -->

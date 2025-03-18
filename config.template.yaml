@@ -32,6 +32,8 @@ params:
   vinceServer: "<your-vince-server>"
   vinceDataDomain: "<your-vince-data-domain"
 
+  medamaServer: "<your-medama-server>"
+
   avatar: "/images/avatar.png"
   headerIcon: "/images/GitHub-Mark-Light-32px.png"
 
